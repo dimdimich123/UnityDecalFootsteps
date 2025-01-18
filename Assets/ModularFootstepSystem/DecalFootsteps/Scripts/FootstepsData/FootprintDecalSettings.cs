@@ -9,26 +9,62 @@ namespace ModularFootstepSystem
     public class FootprintDecalSettings : ScriptableObject
     {
         /// <summary>
-        /// Decal pivot.
+        /// The "NearClipPlane" parameter of the <see cref="Projector"/> component.
         /// </summary>
-        public Vector3 Pivot => pivot;
+        public virtual float NearClipPlane => nearClipPlane;
 
         /// <summary>
-        /// Decal size.
+        /// The "FarClipPlane" parameter of the <see cref="Projector"/> component.
         /// </summary>
-        public Vector3 Size => size;
+        public virtual float FarClipPlane => farClipPlane;
+
+        /// <summary>
+        /// The "FieldOfView" parameter of the <see cref="Projector"/> component.
+        /// </summary>
+        public virtual float FieldOfView => fieldOfView;
+
+        /// <summary>
+        /// The "AspectRatio" parameter of the <see cref="Projector"/> component.
+        /// </summary>
+        public virtual float AspectRatio => aspectRatio;
+
+        /// <summary>
+        /// The "Orthographic" parameter of the <see cref="Projector"/> component.
+        /// </summary>
+        public virtual bool Orthographic => orthographic;
+
+        /// <summary>
+        /// The "OrthographicSize" parameter of the <see cref="Projector"/> component.
+        /// </summary>
+        public virtual float OrthographicSize => orthographicSize;
 
         /// <summary>
         /// Footprint decal material. Contains an image of the footprint and a normal if available.
         /// </summary>
-        public Material Material => material;
+        public virtual Material Material => material;
+
+        /// <summary>
+        /// Ignored layers when displaying decals.
+        /// </summary>
+        public virtual LayerMask IgnoreLayers => ignoreLayers;
 
         [SerializeField]
-        protected Vector3 pivot = Vector3.zero;
+        protected float nearClipPlane = 0f;
         [SerializeField]
-        protected Vector3 size = Vector3.one;
+        protected float farClipPlane = 0f;
+        [SerializeField]
+        protected float fieldOfView = 0f;
+        [SerializeField]
+        protected float aspectRatio = 0f;
+        [SerializeField]
+        protected bool orthographic = true;
+        [SerializeField]
+        protected float orthographicSize = 0f;
 
         [SerializeField]
         protected Material material = default;
+
+        [SerializeField]
+        protected LayerMask ignoreLayers = default;
     }
 }

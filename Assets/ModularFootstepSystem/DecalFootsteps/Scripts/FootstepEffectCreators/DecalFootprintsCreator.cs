@@ -1,7 +1,6 @@
 ﻿namespace ModularFootstepSystem
 {
     using UnityEngine;
-    using UnityEngine.Rendering.Universal;
     using Extensions;
 
     /// <summary>
@@ -38,7 +37,7 @@
 
         protected FootprintDecalSettings footprintSettings = default;
 
-        protected DecalProjector footprint = default;
+        protected Projector footprint = default;
 
         protected Quaternion footprintRotation = Quaternion.identity;
 
@@ -63,7 +62,7 @@
         {
             if (isLeaveEffect && footprintSettings != null)
             {
-                footprint = footprintPool.Get.GetComponent<DecalProjector>();
+                footprint = footprintPool.Get.GetComponent<Projector>();
                 InitializeEffect();
                 SetPosition(footprint.transform);
             }
@@ -74,9 +73,14 @@
         /// </summary>
         protected virtual void InitializeEffect()
         {
-            footprint.pivot = footprintSettings.Pivot;
-            footprint.size = footprintSettings.Size;
+            footprint.nearClipPlane = footprintSettings.NearClipPlane;
+            footprint.farClipPlane = footprintSettings.FarClipPlane;
+            footprint.fieldOfView = footprintSettings.FieldOfView;
+            footprint.aspectRatio = footprintSettings.AspectRatio;
+            footprint.orthographic = footprintSettings.Orthographic;
+            footprint.orthographicSize = footprintSettings.OrthographicSize;
             footprint.material = footprintSettings.Material;
+            footprint.ignoreLayers = footprintSettings.IgnoreLayers;
         }
 
         /// <summary>
