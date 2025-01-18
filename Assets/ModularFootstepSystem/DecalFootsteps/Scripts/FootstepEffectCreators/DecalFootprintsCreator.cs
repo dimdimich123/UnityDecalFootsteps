@@ -1,7 +1,7 @@
 ﻿namespace ModularFootstepSystem
 {
     using UnityEngine;
-    using UnityEngine.Rendering.Universal;
+    using UnityEngine.Rendering.HighDefinition;
     using Extensions;
 
     /// <summary>
